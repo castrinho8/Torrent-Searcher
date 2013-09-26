@@ -1,0 +1,58 @@
+# Practica Final -COMPILADORES
+# Marcos Chavarria Teijeiro ( marcos.chavarria@udc.es ).
+# Pablo Castro Valiño ( pablo.castro1@udc.es ).
+
+Buscador de Torrents
+
+INTRODUCCIÓN:
+Nuestra práctica se basa en la búsqueda en diversos motores de búsquedas de ficheros torrent.
+
+
+EJECUCIÓN:
+
+Para la ejecución de la práctica se debe utilizar el MakeFile para realizar su compilación.
+El comando "make" nos muestra las diversas opciones y una de ellas es "make compile" que generará un fichero ejecutable denominado "torrent_searcher".
+
+Para su ejecución podemos usar "make run" y ejecutará la búsqueda en todos los motores que tenemos en nuestra práctica, o también podemos ejecutar el programa de forma tradicionar "./torrent_searcher  [OPCIONES]" y en el campo opciones indicar los buscadores en los que buscar.
+Con el comando "make" podremos ver todas las opciones de ejecución para los diferentes buscadores.
+
+FUNCIONAMIENTO:
+
+El programa comienza analizando los parámetros que se le han pasado y seleccionando los motores de búsqueda adecuados para dichos parámetros.
+Posteriormente se le pide al usuario que introduzca por pantalla la búsqueda que se desea realizar y se inicializan los motores de búsqueda y el fichero HTML que se mostrará como salida.
+
+Es entonces cuando el programa ejecuta iterativamente las siguientes acciones para cada motor de búsqueda:
+	- Se conecta y descarga la web indicada a través de la URL proporcionada con las palabras a buscar.
+	- Parsea el fichero HTML descargado para obtener la información que se necesita y que se va guardando en una lista enlazada en la que cada elemento es cada uno de los diferentes items resultado que obtenemos de la web.
+	- Se escribe el nombre del motor de búsqueda en el que se ha buscado (en caso de que sea el primer elemento buscado en el)
+	- Se imprimen en el fichero HTML todos los elementos de la lista que hemos obtenido.
+
+Finalmente, cuando se termina de acceder a todos los motores, se abre Firefox y se muestra el HTML generado.
+
+En referencia al resultado de nuestro programa, se muestran 5 buscadores diferentes, de los cuales, debido a la complejidad existente, solamente nos permiten acceder a los "magnet links" las webs de The Pirate Bay y Torrent Crazy.
+Torrent Reactor nos devuelve un link directo al fichero .torrent y por último, tanto Vertor como Bitsnoop, contienen un link a la web original desde la cual descargar el "magnet link" o en su defecto el archivo .torrent directamente.
+
+
+
+MODULO html_lib.c
+
+Módulo que contiene todo lo relacionado con la generación del fichero HTML, asi como todas las funciones que permiten inicializar, terminar, insertar elementos o nuevas lineas.
+
+También contiene la variable global en la que guardamos la referencia al fichero que estamos escribiendo para facilitar su acceso.
+
+
+MODULO lists_lib.c
+
+Módulo que contiene las definiciones de las estructuras de datos utilizadas para guardar los elementos resultado de las búsquedas y la información relacionada con los diversos sitios web en donde se realizan las búsquedas.
+
+Asi mismo, guardamos las variables globales que contienen las listas de elementos y de sitios web, las variables que nos permiten identificar que motores van a ser usuados y cuales no y por último alguna función para interactuar con las listas, como la de insertar_elemento.
+
+
+
+
+
+
+ 
+
+
+
